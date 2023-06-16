@@ -25,11 +25,16 @@ public class ResourceController {
     public String getNextDoorToOpen() {
         logger.info("Receiving request, calling great API");
         final var stats = greatApiClient.getDoorsStats(5);
-        logger.info("Great API returned {}", stats);
-        return stats.stream()
+        logger.info("Great API returned [{}]", stats);
+
+        String door = stats.stream()
                 .min(Comparator.comparing(GreatApiClient.ApiDoorStat::nbOpening))
                 .orElse(new GreatApiClient.ApiDoorStat("RUN !!!", 0))
                 .doorName();
+
+        logger.info("Selected door [{}]", door);
+
+        return door;
     }
 
 }
