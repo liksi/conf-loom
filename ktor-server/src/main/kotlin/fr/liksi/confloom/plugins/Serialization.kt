@@ -1,4 +1,4 @@
-package confloom.liksi.fr.plugins
+package fr.liksi.confloom.plugins
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -8,7 +8,5 @@ import io.ktor.server.application.*
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
         json()
-    }
-    routing {
     }
 }

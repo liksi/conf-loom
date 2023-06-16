@@ -14,7 +14,6 @@ import java.util.Comparator;
 @RestController
 public class ResourceController {
 
-    @Autowired
     final GreatApiClient greatApiClient;
 
     private static final Logger logger = LoggerFactory.getLogger(ResourceController.class);

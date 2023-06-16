@@ -1,24 +1,26 @@
-package fr.liksi.client
+package fr.liksi.confloom.client
 
 import com.typesafe.config.Config
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.Serializable
-import org.koin.core.annotation.Single
 
-@Single
-class GreatApiClient(private val config: Config) {
+class GreatApiClient(private val baseUrl: String) {
     private val httpClient = HttpClient(CIO) {
         install(HttpTimeout) {
             connectTimeoutMillis = 1_000_000
             requestTimeoutMillis = 1_000_000
         }
+        install(ContentNegotiation) {
+            json()
+        }
         defaultRequest {
-            host = config.getString("ext.great-api.host")
-            port = config.getInt("ext.great-api.port")
+            url(baseUrl)
         }
     }
 
