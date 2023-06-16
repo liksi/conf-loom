@@ -1,0 +1,14 @@
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 8
+ext:
+  great-api:
+    baseUrl: http://localhost:8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,prometheus
