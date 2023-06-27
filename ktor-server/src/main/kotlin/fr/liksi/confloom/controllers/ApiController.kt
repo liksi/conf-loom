@@ -12,7 +12,7 @@ fun Application.apiController() {
         get("/api") {
             call.application.environment.log.info("Receiving request, calling great API")
 
-            val doorName = greatApiClient.getDoorsStat(5)
+            val doorName = greatApiClient.getDoorsStat(3)
                 .minByOrNull { it.nbOpening }?.doorName
                 ?: "RUN !!!"
 

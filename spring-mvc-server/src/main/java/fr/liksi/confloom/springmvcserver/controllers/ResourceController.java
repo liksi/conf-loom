@@ -23,7 +23,7 @@ public class ResourceController {
     @GetMapping("/api")
     public String getNextDoorToOpen() {
         logger.info("Receiving request, calling great API");
-        final var stats = greatApiClient.getDoorsStats(5);
+        final var stats = greatApiClient.getDoorsStats(3);
         logger.info("Great API returned [{}]", stats);
 
         String door = stats.stream()
